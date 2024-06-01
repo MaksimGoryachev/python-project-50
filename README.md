@@ -18,12 +18,14 @@ Generating a report in the form of plain text, stylish and json
 
 ---
 
-##Usage example:
+## Usage example:
 
 gendiff --format plain filepath1.json filepath2.yml
 
 Setting "common.setting4" was added with value: False
+
 Setting "group1.baz" was updated. From 'bas' to 'bars'
+
 Section "group2" was removed
 
 ---
