@@ -1,4 +1,4 @@
-# Gendiff (Difference Calculator)
+# Gendiff (Difference Generator)
 
 ---
 
