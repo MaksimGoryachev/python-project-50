@@ -31,3 +31,5 @@ Setting "group1.baz" was updated. From 'bas' to 'bars'
 Section "group2" was removed
 
 ---
+
+https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU
