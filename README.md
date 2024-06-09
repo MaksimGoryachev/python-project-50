@@ -11,7 +11,7 @@
 
 ## Description
 
-Difference Calculator is a program that determines the difference between two data structures. This is a popular task, for which there are many online services, for example, json diff. A similar mechanism, for example, is used when outputting tests or when automatically tracking changes in configuration files.
+Difference Generator is a program that determines the difference between two data structures. This is a popular task, for which there are many online services, for example, json diff. A similar mechanism, for example, is used when outputting tests or when automatically tracking changes in configuration files.
 
 Utility Features:
 
