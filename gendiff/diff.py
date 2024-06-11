@@ -23,8 +23,8 @@ def generate_diff(file1, file2):
             result_dict[key_new] = dict1[key]
 
         else:
-            key_newm = '- ' + key
-            result_dict[key_newm] = dict1[key]
-            key_newp = '+ ' + key
-            result_dict[key_newp] = dict2[key]
+            key_new_m = '- ' + key
+            result_dict[key_new_m] = dict1[key]
+            key_new_p = '+ ' + key
+            result_dict[key_new_p] = dict2[key]
     return result_dict

@@ -15,21 +15,33 @@ Difference Generator is a program that determines the difference between two dat
 
 Utility Features:
 
-Support for different input formats: yaml, json
-Generating a report in the form of plain text, stylish and json
+* Support for different input formats: `yaml`, `json`
+* Generating a report in the form of plain text, stylish and json
+
+---
+
+## Install
+
+### Python
+
+Before installing the package, you need to make sure that you have Python version 3.8 or higher installed.
+
+```bash
+>> python --version
+Python 3.8.0+
+```
+If you don't have Python installed, you can download and install it
+from [the official Python website](https://www.python.org/downloads/).
 
 ---
 
 ## Usage example:
 
-gendiff --format plain filepath1.json filepath2.yml
+```sh
+gendiff path/to/file1  path/to/file2
+```
 
-Setting "common.setting4" was added with value: False
 
-Setting "group1.baz" was updated. From 'bas' to 'bars'
+[![asciicast](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU.svg)](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU)
 
-Section "group2" was removed
 
----
-
-https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU
