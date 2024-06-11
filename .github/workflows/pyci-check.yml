@@ -1,12 +1,5 @@
 name: Python CI
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - '**'
+on: push
 jobs:
   build:
     name: Build and test
