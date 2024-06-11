@@ -4,7 +4,6 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/MaksimGoryachev/python-project-50/actions)
-[![CI-check](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/pyci-check.yml/badge.svg)](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/pyci-check.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/be6c6ad11b42d051d4c4/maintainability)](https://codeclimate.com/github/MaksimGoryachev/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/be6c6ad11b42d051d4c4/test_coverage)](https://codeclimate.com/github/MaksimGoryachev/python-project-50/test_coverage)
 
@@ -34,6 +33,9 @@ Python 3.8.0+
 If you don't have Python installed, you can download and install it
 from [the official Python website](https://www.python.org/downloads/).
 
+
+1. Clone the repository to your computer `git clone https://github.com/MaksimGoryachev/python-project-50`
+2. Install the package `make setup`
 ---
 
 ## Usage example:
