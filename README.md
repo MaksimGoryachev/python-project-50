@@ -46,5 +46,3 @@ gendiff path/to/file1  path/to/file2
 
 
 [![asciicast](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU.svg)](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU)
-
-
