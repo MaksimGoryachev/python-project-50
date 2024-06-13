@@ -6,7 +6,8 @@
 [![Actions Status](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/MaksimGoryachev/python-project-50/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/be6c6ad11b42d051d4c4/maintainability)](https://codeclimate.com/github/MaksimGoryachev/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/be6c6ad11b42d051d4c4/test_coverage)](https://codeclimate.com/github/MaksimGoryachev/python-project-50/test_coverage)
-[![GitHub Workflow Status](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/pyci-check.yml/badge.svg)](https://github.com/MaksimGoryachev/python-project-50/actions)
+[![GitHub Workflow Status](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/pyci-check.yml/badge.svg)](https://github.com/MaksimGoryachev/python-project-50/actions/workflows/pyci-check.yml)
+
 ---
 
 ## Description
