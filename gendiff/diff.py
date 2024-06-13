@@ -1,6 +1,17 @@
 import json
 
 
+def string_conversion(data):
+    res = ''
+    json_str = json.dumps(data, indent=2)
+    for line in json_str.split('\n'):
+        if line.strip().endswith(','):
+            res += (line[:-1].replace('"', '')) + '\n'
+        else:
+            res += (line.replace('"', '')) + '\n'
+    return res
+
+
 def generate_diff(file1, file2):
     with open(file1) as f1:
         dict1 = json.load(f1)
@@ -27,4 +38,4 @@ def generate_diff(file1, file2):
             result_dict[key_new_m] = dict1[key]
             key_new_p = '+ ' + key
             result_dict[key_new_p] = dict2[key]
-    return result_dict
+    return string_conversion(result_dict)
