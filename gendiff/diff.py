@@ -1,7 +1,8 @@
 import json
+from gendiff.parser import parse
 
 
-def string_conversion(data):
+def json_string_conversion(data):
     res = ''
     json_str = json.dumps(data, indent=2)
     for line in json_str.split('\n'):
@@ -13,10 +14,8 @@ def string_conversion(data):
 
 
 def generate_diff(file1, file2):
-    with open(file1) as f1:
-        dict1 = json.load(f1)
-    with open(file2) as f2:
-        dict2 = json.load(f2)
+    dict1 = parse(file1)
+    dict2 = parse(file2)
     keys = dict1.keys() | dict2.keys()
     result_dict = {}
     for key in sorted(keys):
@@ -38,4 +37,4 @@ def generate_diff(file1, file2):
             result_dict[key_new_m] = dict1[key]
             key_new_p = '+ ' + key
             result_dict[key_new_p] = dict2[key]
-    return string_conversion(result_dict)
+    return json_string_conversion(result_dict)
