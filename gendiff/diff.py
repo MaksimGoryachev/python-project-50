@@ -1,8 +1,15 @@
+"""
+This is a diff module.
+"""
+
 import json
 from gendiff.parser import parse
 
 
 def json_string_conversion(data):
+    """
+    This string  conversion function.
+    """
     res = ''
     json_str = json.dumps(data, indent=2)
     for line in json_str.split('\n'):
@@ -10,10 +17,14 @@ def json_string_conversion(data):
             res += (line[:-1].replace('"', '')) + '\n'
         else:
             res += (line.replace('"', '')) + '\n'
+    res = res[:-1]
     return res
 
 
 def generate_diff(file1, file2):
+    """
+    This function the generate difference function with different input files.
+    """
     dict1 = parse(file1)
     dict2 = parse(file2)
     keys = dict1.keys() | dict2.keys()
