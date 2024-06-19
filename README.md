@@ -42,8 +42,16 @@ from [the official Python website](https://www.python.org/downloads/).
 ## Usage example:
 
 ```sh
-gendiff path/to/file1  path/to/file2
+gendiff path/to/file1.json  path/to/file2.json
 ```
 
-
 [![asciicast](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU.svg)](https://asciinema.org/a/wYWZIa1YtvZc2KKFE0OQ4k6nU)
+
+---
+
+```sh
+gendiff path/to/file1.yaml  path/to/file2.yaml
+```
+[![asciicast](https://asciinema.org/a/5Z6aMLJ3iP2BQ0PDnXTvC3ppy.svg)](https://asciinema.org/a/5Z6aMLJ3iP2BQ0PDnXTvC3ppy)
+
+---
