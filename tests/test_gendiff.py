@@ -1,5 +1,5 @@
 """
-This is a module docstring.
+This is a test module.
 """
 
 import pytest
@@ -24,7 +24,7 @@ def test_run_gendiff(first_file, second_file, expected):
 # from pathlib import Path
 # from gendiff.diff import generate_diff
 #
-#
+# @pytest.mark.parametrize("path", [Path('./tests/fixtures')])
 # def test_run_gendiff(path: Path):
 #     got_json = generate_diff(path / 'file1.json', path / 'file2.json')
 #     got_yaml = generate_diff(path / 'file1.yaml', path / 'file2.yaml')
@@ -32,8 +32,8 @@ def test_run_gendiff(first_file, second_file, expected):
 #         expected = f.read()
 #     assert got_json == expected
 #     assert got_yaml == expected
-#
-#
+
+
 # @pytest.mark.parametrize("path", [Path('./tests/fixtures')])
 # def test_path_parametrization(path: Path):
 #     test_run_gendiff(path)
