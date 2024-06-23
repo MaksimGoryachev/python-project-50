@@ -55,3 +55,18 @@ gendiff path/to/file1.yaml  path/to/file2.yaml
 [![asciicast](https://asciinema.org/a/5Z6aMLJ3iP2BQ0PDnXTvC3ppy.svg)](https://asciinema.org/a/5Z6aMLJ3iP2BQ0PDnXTvC3ppy)
 
 ---
+
+```sh
+gendiff tests/fixtures/file_nested1.json tests/fixtures/file_nested2.json 
+```
+[![asciicast](https://asciinema.org/a/iAM3d0QeM2zrSvBvwx9JZHASQ.svg)](https://asciinema.org/a/iAM3d0QeM2zrSvBvwx9JZHASQ)
+
+---
+
+```sh
+gendiff --format plain tests/fixtures/file_nested1.json tests/fixtures/file_nested2.json
+
+```
+[![asciicast](https://asciinema.org/a/Pjxw2dWtPCx2Kpq2mIW0mBAl2.svg)](https://asciinema.org/a/Pjxw2dWtPCx2Kpq2mIW0mBAl2)
+
+---
