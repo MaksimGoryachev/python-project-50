@@ -14,21 +14,27 @@ def test_run_gendiff(path: Path):
     """
     got_json = generate_diff(path / 'file1.json', path / 'file2.json')
     got_yaml = generate_diff(path / 'file1.yaml', path / 'file2.yaml')
-    got_nested_json = generate_diff(path / 'file_nested1.json', path / 'file_nested2.json')
-    got_nested_yaml = generate_diff(path / 'file_nested1.yaml', path / 'file_nested2.yaml')
-    got_plain = generate_diff(path / 'file_nested1.yaml', path / 'file_nested2.yaml', 'plain')
+    got_nested_json = generate_diff(path / 'file_nested1.json',
+                                    path / 'file_nested2.json', 'json')
+    got_nested_yaml = generate_diff(path / 'file_nested1.yaml',
+                                    path / 'file_nested2.yaml', 'stylish')
+    got_plain = generate_diff(path / 'file_nested1.yaml',
+                              path / 'file_nested2.yaml', 'plain')
 
     with open(path / 'res_stylish', 'r', encoding="utf-8") as f:
         expected = f.read().strip() # json.load(f)
     with open(path / 'res_stylish_nested', 'r', encoding="utf-8") as f1:
         expected_nested = f1.read().strip()
-    with open(path / 'plain', 'r', encoding="utf-8") as f2:
+    with open(path / 'res_plain', 'r', encoding="utf-8") as f2:
         expected_plain = f2.read().strip()
+    with open(path /'res_json', 'r', encoding="utf-8") as f3:
+        expected_json = f3.read().strip()
     assert got_json == expected
     assert got_yaml == expected
     # assert got_nested_json == expected_nested
     # assert got_nested_yaml == expected_nested
     assert got_plain == expected_plain
+    assert got_nested_json == expected_json
 
 # import pytest
 # from gendiff.diff import generate_diff

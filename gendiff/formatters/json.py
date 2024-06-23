@@ -1,2 +1,5 @@
+from json import dumps
+
+
 def formatter_json(node: dict):
-    return 'iter_(node)'
+    return dumps(node, indent=4)
