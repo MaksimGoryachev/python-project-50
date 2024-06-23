@@ -29,12 +29,12 @@ def iter_(node: dict, depth=0) -> str:
     formatted_value2 = to_string(node.get('new_value'), depth)
 
     if node['type'] == 'root':
-        lines = map(lambda child: iter_(child, depth + 1), children)
+        lines = (iter_(child, depth + 1) for child in children)
         result = '\n'.join(lines)
         return f'{{\n{result}\n}}'
 
     if node['type'] == 'nested':
-        lines = map(lambda child: iter_(child, depth + 1), children)
+        lines = (iter_(child, depth + 1) for child in children)
         result = '\n'.join(lines)
         return f"{indent}  {node['key']}: {{\n{result}\n  {indent}}}"
 
@@ -47,12 +47,12 @@ def iter_(node: dict, depth=0) -> str:
     if node['type'] == 'unchanged':
         return f"{indent}  {node['key']}: {formatted_value}"
 
-    if node['type'] == 'deleted':
+    if node['type'] == 'removed':
         return f"{indent}- {node['key']}: {formatted_value}"
 
     if node['type'] == 'added':
         return f"{indent}+ {node['key']}: {formatted_value}"
-    return ''
+    # return ''
 
 
 def formatter_stylish(node: dict):

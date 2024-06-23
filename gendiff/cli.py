@@ -16,6 +16,6 @@ def parsing_args():
     parser.add_argument('-f', '--format',
                         choices=['stylish', 'plain', 'json'],
                         default='stylish',
-                        help='set format of output')
+                        help='set format of output', type=str)
     args = parser.parse_args()
-    return args.first_file, args.second_file
+    return args.first_file, args.second_file, args.format

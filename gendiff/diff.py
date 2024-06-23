@@ -4,21 +4,7 @@ This is a diff module.
 
 # import json
 from gendiff.parser import parse
-from gendiff.formatters.stylish import formatter_stylish
-
-# def json_string_conversion(data):
-#     """
-#     This string conversion function.
-#     """
-#     res = ''
-#     json_str = json.dumps(data, indent=2)
-#     for line in json_str.split('\n'):
-#         if line.strip().endswith(','):
-#             res += (line[:-1].replace('"', '')) + '\n'
-#         else:
-#             res += (line.replace('"', '')) + '\n'
-#     res = res[:-1]
-#     return res
+from gendiff.format_selector import select_formatter
 
 
 def make_diff(dict1, dict2):
@@ -39,7 +25,7 @@ def make_diff(dict1, dict2):
                                 })
         elif key not in dict2:
             result_list.append({'key': key,
-                                'type': 'deleted',
+                                'type': 'removed',
                                 'value': child1
                                 })
         elif isinstance(child1, dict) and isinstance(child2, dict):
@@ -69,14 +55,28 @@ def build_diff(dict_1: dict, dict_2: dict):
     }
 
 
-def generate_diff(file1, file2):
+def generate_diff(file1, file2, format_of_output='stylish'):
     """
     This function the generate difference function with different input files.
     """
     dict1 = parse(file1)
     dict2 = parse(file2)
     result = build_diff(dict1, dict2)
-    return formatter_stylish(result)
+    return select_formatter(result, format_of_output)
+
+# def json_string_conversion(data):
+#     """
+#     This string conversion function.
+#     """
+#     res = ''
+#     json_str = json.dumps(data, indent=2)
+#     for line in json_str.split('\n'):
+#         if line.strip().endswith(','):
+#             res += (line[:-1].replace('"', '')) + '\n'
+#         else:
+#             res += (line.replace('"', '')) + '\n'
+#     res = res[:-1]
+#     return res
 
 
 # def get_result_dict(dict1, dict2):
