@@ -70,3 +70,11 @@ gendiff --format plain tests/fixtures/file_nested1.json tests/fixtures/file_nest
 [![asciicast](https://asciinema.org/a/Pjxw2dWtPCx2Kpq2mIW0mBAl2.svg)](https://asciinema.org/a/Pjxw2dWtPCx2Kpq2mIW0mBAl2)
 
 ---
+
+```sh
+gendiff --format json tests/fixtures/file_nested1.json tests/fixtures/file_nested2.json
+
+```
+[![asciicast](https://asciinema.org/a/AO86SqMdxHlKuxGcHsOKfXkHT.svg)](https://asciinema.org/a/AO86SqMdxHlKuxGcHsOKfXkHT)
+
+---
