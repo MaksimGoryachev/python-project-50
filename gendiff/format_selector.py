@@ -9,7 +9,7 @@ def select_formatter(diff, format_):
         'plain': plain,
         'json': json,
     }
-    if format in formats:
+    if format_ in formats:
         return formats[format_](diff)
 
     raise ValueError(f'Unknown format: {format_}')

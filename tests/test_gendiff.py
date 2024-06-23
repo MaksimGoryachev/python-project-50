@@ -1,6 +1,7 @@
 """
 This is a test module.
 """
+
 from pathlib import Path
 import json
 import pytest
@@ -28,7 +29,6 @@ def test_run_gendiff(path: Path):
     # assert got_nested_json == expected_nested
     # assert got_nested_yaml == expected_nested
     assert got_plain == expected_plain
-
 
 # import pytest
 # from gendiff.diff import generate_diff
