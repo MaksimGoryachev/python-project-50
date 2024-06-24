@@ -28,8 +28,8 @@ def iter_(node: dict, path="") -> str:
     '''
     This is a function for formatting a finished string into a plain format.
     '''
-    children = node.get('children', [])
-    key = node.get('key', '')
+    children = node.get('children')
+    key = node.get('key')
     current_path = f"{path}{key}"
     type_ = node.get('type')
     result = ''
