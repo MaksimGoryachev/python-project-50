@@ -8,18 +8,20 @@ def to_string(value) -> str:
      This is a function for formatting string
     '''
     if isinstance(value, bool):
-        return 'true' if value else 'false'
+        result = 'true' if value else 'false'
 
-    if value is None:
-        return 'null'
+    elif value is None:
+        result = 'null'
 
-    if isinstance(value, dict):
-        return '[complex value]'
+    elif isinstance(value, dict):
+        result = '[complex value]'
 
-    if isinstance(value, int):
-        return value
+    elif isinstance(value, int):
+        result = value
+    else:
+        result = f"'{value}'"
 
-    return f"'{value}'"
+    return result
 
 
 def iter_(node: dict, path="") -> str:
