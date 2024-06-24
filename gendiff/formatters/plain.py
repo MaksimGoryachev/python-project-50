@@ -30,28 +30,30 @@ def iter_(node: dict, path="") -> str:
     key = node.get('key', '')
     current_path = f"{path}{key}"
     type_ = node.get('type')
+    res = ''
 
     if type_ == 'root':
         lines = (iter_(child, path) for child in children)
-        return "\n".join(filter(bool, lines))
+        res = "\n".join(filter(bool, lines))
 
-    if type_ == 'nested':
+    elif type_ == 'nested':
         lines = (iter_(child, f"{current_path}.") for child in children)
-        return "\n".join(filter(bool, lines))
+        res = "\n".join(filter(bool, lines))
 
-    if type_ == 'removed':
-        return f"Property '{current_path}' was removed"
+    elif type_ == 'removed':
+        res = f"Property '{current_path}' was removed"
 
-    if type_ == 'added':
+    elif type_ == 'added':
         formatted_value = to_string(node.get('value'))
-        return (f"Property '{current_path}'"
-                f" was added with value: {formatted_value}")
+        res = (f"Property '{current_path}'"
+               f" was added with value: {formatted_value}")
 
-    if type_ == 'changed':
+    elif type_ == 'changed':
         formatted_old_value = to_string(node.get('old_value'))
         formatted_new_value = to_string(node.get('new_value'))
-        return (f"Property '{current_path}' was updated."
-                f" From {formatted_old_value} to {formatted_new_value}")
+        res = (f"Property '{current_path}' was updated."
+               f" From {formatted_old_value} to {formatted_new_value}")
+    return res
 
 
 def formatter_plain(node: dict):
