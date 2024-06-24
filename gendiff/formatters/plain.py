@@ -7,6 +7,8 @@ def to_string(value) -> str:
     '''
      This is a function for formatting string
     '''
+    result = f"'{value}'"
+
     if isinstance(value, bool):
         result = 'true' if value else 'false'
 
@@ -18,8 +20,6 @@ def to_string(value) -> str:
 
     elif isinstance(value, int):
         result = value
-    else:
-        result = f"'{value}'"
 
     return result
 
@@ -32,30 +32,30 @@ def iter_(node: dict, path="") -> str:
     key = node.get('key', '')
     current_path = f"{path}{key}"
     type_ = node.get('type')
-    res = ''
+    result = ''
 
     if type_ == 'root':
         lines = (iter_(child, path) for child in children)
-        res = "\n".join(filter(bool, lines))
+        result = "\n".join(filter(bool, lines))
 
     elif type_ == 'nested':
         lines = (iter_(child, f"{current_path}.") for child in children)
-        res = "\n".join(filter(bool, lines))
+        result = "\n".join(filter(bool, lines))
 
     elif type_ == 'removed':
-        res = f"Property '{current_path}' was removed"
+        result = f"Property '{current_path}' was removed"
 
     elif type_ == 'added':
         formatted_value = to_string(node.get('value'))
-        res = (f"Property '{current_path}'"
-               f" was added with value: {formatted_value}")
+        result = (f"Property '{current_path}'"
+                  f" was added with value: {formatted_value}")
 
     elif type_ == 'changed':
         formatted_old_value = to_string(node.get('old_value'))
         formatted_new_value = to_string(node.get('new_value'))
-        res = (f"Property '{current_path}' was updated."
-               f" From {formatted_old_value} to {formatted_new_value}")
-    return res
+        result = (f"Property '{current_path}' was updated."
+                  f" From {formatted_old_value} to {formatted_new_value}")
+    return result
 
 
 def formatter_plain(node: dict):
