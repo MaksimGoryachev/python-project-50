@@ -3,9 +3,16 @@ This is a test module.
 """
 
 from pathlib import Path
-import json
 import pytest
 from gendiff.diff import generate_diff
+
+
+def read_file(path: Path) -> str:
+    """
+    This function reads a file.
+    """
+    with open(path, 'r', encoding="utf-8") as file:
+        return file.read().strip()
 
 @pytest.mark.parametrize("path", [Path('./tests/fixtures')])
 def test_run_gendiff(path: Path):
@@ -14,32 +21,29 @@ def test_run_gendiff(path: Path):
     """
     got_json = generate_diff(path / 'file1.json', path / 'file2.json')
     got_yaml = generate_diff(path / 'file1.yaml', path / 'file2.yaml')
-    got_nested_json = generate_diff(path / 'file_nested1.json',
-                                    path / 'file_nested2.json', 'json')
-    got_nested_yaml = generate_diff(path / 'file_nested1.yaml',
-                                    path / 'file_nested2.yaml', 'stylish')
-    got_plain = generate_diff(path / 'file_nested1.yaml',
-                              path / 'file_nested2.yaml', 'plain')
-
-    with open(path / 'res_stylish', 'r', encoding="utf-8") as f:
-        expected = f.read().strip() # json.load(f)
-    with open(path / 'res_stylish_nested', 'r', encoding="utf-8") as f1:
-        expected_nested = f1.read().strip()
-    with open(path / 'res_plain', 'r', encoding="utf-8") as f2:
-        expected_plain = f2.read().strip()
-    with open(path /'res_json', 'r', encoding="utf-8") as f3:
-        expected_json = f3.read().strip()
+    expected = read_file(path /'res_stylish')
     assert got_json == expected
     assert got_yaml == expected
-    # assert got_nested_json == expected_nested
-    # assert got_nested_yaml == expected_nested
-    assert got_plain == expected_plain
-    assert got_nested_json == expected_json
 
-# import pytest
-# from gendiff.diff import generate_diff
-#
-#
+    got_nested_json = generate_diff(path / 'file_nested1.json',
+                                    path / 'file_nested2.json', 'stylish')
+    got_nested_yaml = generate_diff(path / 'file_nested1.yaml',
+                                    path / 'file_nested2.yaml', 'stylish')
+    expected_nested = read_file(path /'res_stylish_nested')
+    assert got_nested_json == expected_nested
+    assert got_nested_yaml == expected_nested
+
+    got_plain = generate_diff(path / 'file_nested1.yaml',
+                              path / 'file_nested2.yaml', 'plain')
+    expected_plain = read_file(path / 'res_plain')
+    assert got_plain == expected_plain
+
+    got_json_nested = generate_diff(path / 'file_nested1.json',
+                                    path / 'file_nested2.json', 'json')
+
+    expected_json = read_file(path /'res_json_nested')
+    assert got_json_nested == expected_json
+
 # @pytest.mark.parametrize('first_file, second_file, expected', [
 #     ('./tests/fixtures/file1.json', './tests/fixtures/file2.json',
 #      './tests/fixtures/res_stylish'),

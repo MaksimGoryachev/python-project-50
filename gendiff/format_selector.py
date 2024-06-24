@@ -1,9 +1,14 @@
-from gendiff.formatters.stylish import formatter_stylish as stylish
-from gendiff.formatters.plain import formatter_plain as plain
-from gendiff.formatters.json import formatter_json as json
+"""
+    This module allows you to select the output format.
+    """
+
+from gendiff.formatters import (stylish, plain, json)
 
 
 def select_formatter(diff, format_):
+    """
+    This function allows you to select the output format.
+    """
     formats = {
         'stylish': stylish,
         'plain': plain,
