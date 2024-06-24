@@ -7,6 +7,7 @@ def to_string(value) -> str:
     '''
      This is a function for formatting string
     '''
+
     result = f"'{value}'"
 
     if isinstance(value, bool):
