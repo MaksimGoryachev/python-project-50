@@ -1,4 +1,12 @@
+'''
+This is a module for formatting a finished string into a plain format.
+'''
+
+
 def to_string(value) -> str:
+    '''
+     This is a function for formatting string
+    '''
     if isinstance(value, bool):
         return 'true' if value else 'false'
     if value is None:
@@ -11,6 +19,9 @@ def to_string(value) -> str:
 
 
 def iter_(node: dict, path="") -> str:
+    '''
+    This is a function for formatting a finished string into a plain format.
+    '''
     children = node.get('children', [])
     key = node.get('key', '')
     current_path = f"{path}{key}"
@@ -42,4 +53,7 @@ def iter_(node: dict, path="") -> str:
 
 
 def formatter_plain(node: dict):
+    '''
+    This is a plain output function
+    '''
     return iter_(node)

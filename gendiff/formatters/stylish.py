@@ -1,8 +1,19 @@
+'''
+This is a module for formatting a finished string into a stylish format.
+'''
+
+
 def get_indent(depth: int) -> str:
+    '''
+    This function returns the indentation
+    '''
     return " " * (depth * 4 - 2)
 
 
 def to_string(value, depth: int) -> str:
+    '''
+     This is a function for formatting string
+    '''
     if isinstance(value, bool):
         return 'true' if value else 'false'
 
@@ -22,6 +33,9 @@ def to_string(value, depth: int) -> str:
 
 
 def iter_(node: dict, depth=0) -> str:
+    '''
+    This is a function for formatting a finished string into a stylish format.
+    '''
     children = node.get('children')
     indent = get_indent(depth)
     formatted_value = to_string(node.get('value'), depth)
@@ -52,8 +66,10 @@ def iter_(node: dict, depth=0) -> str:
 
     if node['type'] == 'added':
         return f"{indent}+ {node['key']}: {formatted_value}"
-    # return ''
 
 
 def formatter_stylish(node: dict):
+    '''
+    This is a plain output function
+    '''
     return iter_(node)

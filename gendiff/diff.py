@@ -2,12 +2,11 @@
 This is a diff module.
 """
 
-# import json
 from gendiff.parser import parse
 from gendiff.format_selector import select_formatter
 
 
-def make_diff(dict1, dict2):
+def make_diff(dict1: dict, dict2: dict) -> dict:
     """
     This function is a function of generating
     the difference between dictionaries.
@@ -48,7 +47,10 @@ def make_diff(dict1, dict2):
     return result_list
 
 
-def build_diff(dict_1: dict, dict_2: dict):
+def build_diff(dict_1: dict, dict_2: dict) -> dict:
+    '''
+    This function is a function of generating
+    '''
     return {
         'type': 'root',
         'children': make_diff(dict_1, dict_2)
