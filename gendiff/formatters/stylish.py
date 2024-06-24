@@ -14,22 +14,23 @@ def to_string(value, depth: int) -> str:
     '''
      This is a function for formatting string
     '''
+    result = value
     if isinstance(value, bool):
-        return 'true' if value else 'false'
+        result = 'true' if value else 'false'
 
-    if value is None:
-        return 'null'
+    elif value is None:
+        result = 'null'
 
-    if isinstance(value, dict):
+    elif isinstance(value, dict):
         indent = get_indent(depth)
         current_indent = indent + (" " * 6)
         lines = []
         for k, v in value.items():
             lines.append(f"{current_indent}{k}: {to_string(v, depth + 1)}")
-        result = "\n".join(lines)
-        return f'{{\n{result}\n  {indent}}}'
+        res = "\n".join(lines)
+        result = f'{{\n{res}\n  {indent}}}'
 
-    return value
+    return result
 
 
 def iter_(node: dict, depth=0) -> str:
@@ -39,34 +40,34 @@ def iter_(node: dict, depth=0) -> str:
     children = node.get('children')
     indent = get_indent(depth)
     formatted_value = to_string(node.get('value'), depth)
-    formatted_value1 = to_string(node.get('old_value'), depth)
-    formatted_value2 = to_string(node.get('new_value'), depth)
     type_ = node.get('type')
     key_ = node.get('key')
+    result = f"{indent}  {key_}: {formatted_value}"
 
     if type_ == 'root':
         lines = (iter_(child, depth + 1) for child in children)
-        result = '\n'.join(lines)
-        return f'{{\n{result}\n}}'
+        res = '\n'.join(lines)
+        result = f'{{\n{res}\n}}'
 
-    if type_ == 'nested':
+    elif type_ == 'nested':
         lines = (iter_(child, depth + 1) for child in children)
-        result = '\n'.join(lines)
-        return f"{indent}  {key_}: {{\n{result}\n  {indent}}}"
+        res = '\n'.join(lines)
+        result = f"{indent}  {key_}: {{\n{res}\n  {indent}}}"
 
-    if type_ == 'changed':
+    elif type_ == 'changed':
+        formatted_value1 = to_string(node.get('old_value'), depth)
+        formatted_value2 = to_string(node.get('new_value'), depth)
         line1 = f"{indent}- {key_}: {formatted_value1}\n"
         line2 = f"{indent}+ {key_}: {formatted_value2}"
-        return line1 + line2
+        result = line1 + line2
 
-    if type_ == 'unchanged':
-        return f"{indent}  {key_}: {formatted_value}"
+    elif type_ == 'removed':
+        result = f"{indent}- {key_}: {formatted_value}"
 
-    if type_ == 'removed':
-        return f"{indent}- {key_}: {formatted_value}"
+    elif type_ == 'added':
+        result = f"{indent}+ {key_}: {formatted_value}"
 
-    if type_ == 'added':
-        return f"{indent}+ {key_}: {formatted_value}"
+    return result
 
 
 def formatter_stylish(node: dict):
