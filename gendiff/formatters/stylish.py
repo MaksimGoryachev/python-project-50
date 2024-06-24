@@ -41,31 +41,32 @@ def iter_(node: dict, depth=0) -> str:
     formatted_value = to_string(node.get('value'), depth)
     formatted_value1 = to_string(node.get('old_value'), depth)
     formatted_value2 = to_string(node.get('new_value'), depth)
+    type_ = node.get('type')
+    key_ = node.get('key')
 
-    if node['type'] == 'root':
+    if type_ == 'root':
         lines = (iter_(child, depth + 1) for child in children)
         result = '\n'.join(lines)
         return f'{{\n{result}\n}}'
 
-    if node['type'] == 'nested':
+    if type_ == 'nested':
         lines = (iter_(child, depth + 1) for child in children)
         result = '\n'.join(lines)
-        return f"{indent}  {node['key']}: {{\n{result}\n  {indent}}}"
+        return f"{indent}  {key_}: {{\n{result}\n  {indent}}}"
 
-    if node['type'] == 'changed':
-        line1 = f"{indent}- {node['key']}: {formatted_value1}\n"
-        line2 = f"{indent}+ {node['key']}: {formatted_value2}"
-        result = line1 + line2
-        return result
+    if type_ == 'changed':
+        line1 = f"{indent}- {key_}: {formatted_value1}\n"
+        line2 = f"{indent}+ {key_}: {formatted_value2}"
+        return line1 + line2
 
-    if node['type'] == 'unchanged':
-        return f"{indent}  {node['key']}: {formatted_value}"
+    if type_ == 'unchanged':
+        return f"{indent}  {key_}: {formatted_value}"
 
-    if node['type'] == 'removed':
-        return f"{indent}- {node['key']}: {formatted_value}"
+    if type_ == 'removed':
+        return f"{indent}- {key_}: {formatted_value}"
 
-    if node['type'] == 'added':
-        return f"{indent}+ {node['key']}: {formatted_value}"
+    if type_ == 'added':
+        return f"{indent}+ {key_}: {formatted_value}"
 
 
 def formatter_stylish(node: dict):

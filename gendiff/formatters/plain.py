@@ -9,12 +9,16 @@ def to_string(value) -> str:
     '''
     if isinstance(value, bool):
         return 'true' if value else 'false'
+
     if value is None:
         return 'null'
+
     if isinstance(value, dict):
         return '[complex value]'
+
     if isinstance(value, int):
         return value
+
     return f"'{value}'"
 
 
@@ -29,13 +33,11 @@ def iter_(node: dict, path="") -> str:
 
     if type_ == 'root':
         lines = (iter_(child, path) for child in children)
-        result = "\n".join(filter(bool, lines))
-        return result
+        return "\n".join(filter(bool, lines))
 
     if type_ == 'nested':
         lines = (iter_(child, f"{current_path}.") for child in children)
-        result = "\n".join(filter(bool, lines))
-        return result
+        return "\n".join(filter(bool, lines))
 
     if type_ == 'removed':
         return f"Property '{current_path}' was removed"
