@@ -1,7 +1,3 @@
-"""
-This is a test module.
-"""
-
 from pathlib import Path
 import pytest
 from gendiff.diff import generate_diff
