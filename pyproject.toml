@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gendiff"
+name = "hexlet-code"
 version = "0.1.0"
 description = "Difference Generator is a program that determines the difference between two data structures"
 authors = ["MaksimGoryachev <m.goryachev2011@yandex.ru>"]
