@@ -17,5 +17,5 @@ def parsing_args():
                         choices=['stylish', 'plain', 'json'],
                         default='stylish',
                         help='set format of output', type=str)
-    args = parser.parse_args()
-    return args.first_file, args.second_file, args.format
+    # args = parser.parse_args()
+    return parser.parse_args()  # args.first_file, args.second_file, args.format
