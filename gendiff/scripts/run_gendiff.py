@@ -11,9 +11,9 @@ def main():
     This function is a main function.
     '''
     args = parsing_args()
-    diff = generate_diff(first_file=args.first_file,
-                         second_file=args.second_file,
-                         format_of_output=args.format)
+    diff = generate_diff(args.first_file,
+                         args.second_file,
+                         args.format)
     print(diff)
 
 
