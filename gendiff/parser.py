@@ -7,15 +7,23 @@ import yaml
 from yaml.loader import SafeLoader
 
 
-def parse(file_path):
+def read_file(file):
     """
-    This function parse input files.
+    This function return data from a file.
     """
-    with open(file_path, 'r', encoding="utf-8") as file:
-        suffix = Path(file_path).suffix
-        if suffix == '.json':  # file_path.endswith('.json'):
-            return json.load(file)
-        if suffix in ('.yml', '.yaml'):
-            return yaml.load(file, Loader=SafeLoader)
+    with open(file, 'r', encoding="utf-8") as f:
+        return f.read()
 
-    # raise ValueError('Unknown file format')
+
+def parse(data):
+    """
+    This function parse input data.
+    """
+    if Path(data).is_file():
+        file_content = read_file(data)
+        suffix = Path(data).suffix
+        if suffix == '.json':
+            return json.loads(file_content)
+        if suffix in ('.yml', '.yaml'):
+            return yaml.load(file_content, Loader=SafeLoader)
+    return data  # Если это не файл, возвращаем данные как есть
