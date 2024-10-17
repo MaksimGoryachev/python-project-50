@@ -17,4 +17,4 @@ def select_formatter(diff, format_):
     if format_ in formats:
         return formats[format_](diff)
 
-    raise ValueError(f'Unknown format: {format_}')
+    # raise ValueError(f'Unknown format: {format_}')

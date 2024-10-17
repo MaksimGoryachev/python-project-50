@@ -18,4 +18,4 @@ def parse(file_path):
         if suffix in ('.yml', '.yaml'):
             return yaml.load(file, Loader=SafeLoader)
 
-    raise ValueError('Unknown file format')
+    # raise ValueError('Unknown file format')
