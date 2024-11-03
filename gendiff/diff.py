@@ -7,7 +7,7 @@ from gendiff.formatters import (stylish, plain, json)
 from gendiff.diff_generator import build_diff
 
 
-def select_formatter(diff, format_: str):
+def select_formatter(diff, format_name: str):
     """
     This function allows you to select the output format.
     """
@@ -16,7 +16,9 @@ def select_formatter(diff, format_: str):
         'plain': plain,
         'json': json,
     }
-    return formats[format_](diff)
+    if format_name not in formats:
+        raise ValueError(f"Unsupported format: {format_name}")
+    return formats[format_name](diff)
 
 
 def generate_diff(path_file1: str,
