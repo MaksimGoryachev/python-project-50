@@ -5,7 +5,7 @@
 from gendiff.formatters import (stylish, plain, json)
 
 
-def select_formatter(diff, format_):
+def select_formatter(diff, format_: str):
     """
     This function allows you to select the output format.
     """

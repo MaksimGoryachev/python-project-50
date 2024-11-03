@@ -47,21 +47,23 @@ def make_diff(dict1: dict, dict2: dict) -> dict:
     return result_list
 
 
-def build_diff(dict_1: dict, dict_2: dict) -> dict:
+def build_diff(dict1: dict, dict2: dict) -> dict:
     '''
     This function is a function of generating
     '''
     return {
         'type': 'root',
-        'children': make_diff(dict_1, dict_2)
+        'children': make_diff(dict1, dict2)
     }
 
 
-def generate_diff(file1, file2, format_of_output='stylish'):
+def generate_diff(path_file1: str,
+                  path_file2: str,
+                  format_of_output: str = 'stylish'):
     """
     This function the generate difference function with different input files.
     """
-    dict1 = parse(file1)
-    dict2 = parse(file2)
+    dict1 = parse(path_file1)
+    dict2 = parse(path_file2)
     result = build_diff(dict1, dict2)
     return select_formatter(result, format_of_output)

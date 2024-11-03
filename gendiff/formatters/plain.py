@@ -3,7 +3,7 @@ This is a module for formatting a finished string into a plain format.
 '''
 
 
-def to_string(value) -> str:
+def to_string(value: bool | dict | int | None,) -> str:
     '''
      This is a function for formatting string
     '''
@@ -59,7 +59,7 @@ def iter_(node: dict, path="") -> str:
     return result
 
 
-def formatter_plain(node: dict):
+def formatter_plain(node: dict) -> str:
     '''
     This is a plain output function
     '''

@@ -20,7 +20,10 @@ FIXTURES_PATH = Path('tests/fixtures')
     ('file_nested1.json', 'file_nested2.json', 'res_json_nested', 'json'),
     ('file_nested1.yaml', 'file_nested2.yaml', 'res_plain', 'plain'),
 ])
-def test_run_gendiff(file1, file2, expected_file, format_):
+def test_run_gendiff(file1: str,
+                     file2: str,
+                     expected_file: str,
+                     format_: str) -> None:
     """
     This function tests the `generate_diff` function with different input files.
     """

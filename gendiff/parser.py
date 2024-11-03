@@ -7,11 +7,11 @@ import yaml
 from yaml.loader import SafeLoader
 
 
-def read_file(file):
+def read_file(path_file: str) -> str:
     """
     This function return data from a file.
     """
-    with open(file, 'r', encoding="utf-8") as f:
+    with open(path_file, 'r', encoding="utf-8") as f:
         return f.read()
 
 
