@@ -1,5 +1,6 @@
 """
-This is a Parser module.
+This module provides a command-line argument
+parser for comparing two configuration files.
 """
 
 import argparse
