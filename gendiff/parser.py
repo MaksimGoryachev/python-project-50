@@ -24,11 +24,9 @@ def load_and_parse_file(file_path: str):
         file_content = read_file(file_path)
         suffix = Path(file_path).suffix.lower()
         return parse(file_content, suffix)
-
     if Path(file_path).is_dir():
-        return f"Error: the directory is specified instead of the data: {file_path}"
-
-    return f"Error: the file does not exist: {file_path}"
+        return (f"Error: the directory is specified"
+                f" instead of the data: {file_path}")
 
 
 def parse(data, format_name):
