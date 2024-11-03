@@ -6,6 +6,7 @@ from gendiff.parser import parse
 from gendiff.formatters import (stylish, plain, json)
 from gendiff.diff_generator import build_diff
 
+
 def select_formatter(diff, format_: str):
     """
     This function allows you to select the output format.

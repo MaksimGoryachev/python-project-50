@@ -1,6 +1,8 @@
 """
-    This module provides functions to generate differences between two dictionaries.
-    """
+This module provides functions to generate differences
+between two dictionaries.
+"""
+
 
 def make_diff(dict1: dict, dict2: dict) -> dict:
     """
