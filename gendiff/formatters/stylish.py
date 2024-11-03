@@ -10,7 +10,7 @@ def get_indent(depth: int) -> str:
     return " " * (depth * 4 - 2)
 
 
-def to_string(value, depth: int) -> str:
+def to_string(value: bool | dict | str | None, depth: int) -> str:
     '''
      This is a function for formatting string
     '''
@@ -70,7 +70,7 @@ def iter_(node: dict, depth=0) -> str:
     return result
 
 
-def formatter_stylish(node: dict):
+def formatter_stylish(node: dict) -> str:
     '''
     This is a plain output function
     '''

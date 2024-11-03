@@ -19,10 +19,10 @@ def main():
                              args.format)
         print(diff)
     except ValueError as err:
-        print(err)
+        print(f'Неизвестный формат файла{err}')
         sys.exit(1)
     except OSError:
-        print('Какая-то ошибка системы')
+        print('Файл поврежден или отсутствуют права доступа')
         sys.exit(1)
 
 
