@@ -2,7 +2,7 @@
 This is a diff module.
 """
 
-from gendiff.parser import parse
+from gendiff.parser import load_and_parse_file
 from gendiff.formatters import (stylish, plain, json)
 from gendiff.diff_generator import build_diff
 
@@ -27,7 +27,7 @@ def generate_diff(path_file1: str,
     """
     This function the generate difference function with different input files.
     """
-    dict1 = parse(path_file1)
-    dict2 = parse(path_file2)
+    dict1 = load_and_parse_file(path_file1)
+    dict2 = load_and_parse_file(path_file2)
     result = build_diff(dict1, dict2)
     return select_formatter(result, format_of_output)

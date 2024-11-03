@@ -15,15 +15,30 @@ def read_file(path_file: str) -> str:
         return f.read()
 
 
-def parse(data):
+def load_and_parse_file(file_path: str):
+    """
+    This function reads data from a file
+    and parses it based on the file extension.
+    """
+    if Path(file_path).is_file():
+        file_content = read_file(file_path)
+        suffix = Path(file_path).suffix.lower()
+        return parse(file_content, suffix)
+
+    if Path(file_path).is_dir():
+        return f"Error: the directory is specified instead of the data: {file_path}"
+
+    return f"Error: the file does not exist: {file_path}"
+
+
+def parse(data, format_name):
     """
     This function parse input data.
     """
-    if Path(data).is_file():
-        file_content = read_file(data)
-        suffix = Path(data).suffix
-        if suffix == '.json':
-            return json.loads(file_content)
-        if suffix in ('.yml', '.yaml'):
-            return yaml.load(file_content, Loader=SafeLoader)
-    return data  # Если это не файл, возвращаем данные как есть
+    if format_name == '.json':
+        return json.loads(data)
+    if format_name in ('.yml', '.yaml'):
+        return yaml.load(data, Loader=SafeLoader)
+
+    raise ValueError(f'Unsupported format: {format_name}.'
+                     f'Supported formats are .json, .yml, .yaml.')
