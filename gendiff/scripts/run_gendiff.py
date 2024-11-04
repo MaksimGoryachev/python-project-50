@@ -23,7 +23,7 @@ def main():
         sys.exit(2)
     except OSError:
         print('Файл поврежден или отсутствуют права доступа')
-        sys.exit(1)
+        sys.exit(2)
 
 
 if __name__ == '__main__':
