@@ -30,3 +30,16 @@ def test_run_gendiff(file1: str,
     got = generate_diff(FIXTURES_PATH / file1, FIXTURES_PATH / file2, format_)
     expected = read_file(FIXTURES_PATH / expected_file)
     assert got == expected
+
+
+@pytest.mark.parametrize('file1, file2', [
+    ('file1.txt', 'file2.txt'),  # Неверное расширение
+    ('directory/', 'file2.json'),  # Папка вместо файла
+    ('damaged_file.json', 'file2.json'),  # Поврежденный файл
+])
+def test_invalid_files(file1: str, file2: str) -> None:
+    """
+    This function tests the generate_diff function with invalid input files.
+    """
+    with pytest.raises((ValueError, OSError)):
+        generate_diff(FIXTURES_PATH / file1, FIXTURES_PATH / file2, 'stylish')
