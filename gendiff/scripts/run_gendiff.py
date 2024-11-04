@@ -20,7 +20,7 @@ def main():
         print(diff)
     except ValueError as err:
         print(f'Неизвестный формат файла{err}')
-        sys.exit(1)
+        sys.exit(2)
     except OSError:
         print('Файл поврежден или отсутствуют права доступа')
         sys.exit(1)
