@@ -23,7 +23,7 @@ def load_and_parse_file(file_path: str):
     if Path(file_path).is_file():
         file_content = read_file(file_path)
         suffix = Path(file_path).suffix.lower()
-        return parse(file_content, suffix)
+        return parse(file_content, suffix[1:])
     if Path(file_path).is_dir():
         return (f"Error: the directory is specified"
                 f" instead of the data: {file_path}")
@@ -33,10 +33,10 @@ def parse(data, format_name):
     """
     This function parse input data.
     """
-    if format_name == '.json':
+    if format_name == 'json':
         return json.loads(data)
-    if format_name in ('.yml', '.yaml'):
+    if format_name in ('yml', 'yaml'):
         return yaml.load(data, Loader=SafeLoader)
 
     raise ValueError(f'Unsupported format: {format_name}.'
-                     f'Supported formats are .json, .yml, .yaml.')
+                     f'Supported formats are json, yml, yaml.')
